@@ -79,7 +79,9 @@ function SCOREAPP(){
                     });
                 }
             });
-
+            
+            // Delete this if you don't use it anymore
+            
             // //SWIPE ACTION
             // $$('.current_page').swipeRight(function(){
             //     if (x$('.prev_page_1')[0]){
@@ -119,6 +121,7 @@ function SCOREAPP(){
             });
         },
 
+        // Instead of using init as a boolean, use it as a function that calls loadingSpinner(); :)
         loadingSpinner:  function(init, display, callback){
             if(init == true){
                 var opts = {
@@ -334,8 +337,8 @@ function SCOREAPP(){
             self.tools.loadingSpinner(false, false,function(){
                 self.effects.slideLeftOut('.new_page', function(){
 
+                    // Close this gap!
     
-
                     x$('.current_page').addClass('prev_page');
                     x$('.current_page').removeClass('current_page');
 
