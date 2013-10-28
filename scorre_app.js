@@ -1,9 +1,13 @@
-var express  = require('express'),
-    routes   = require('./routes'),
-    http     = require('http'),
-    c        = require('./lib/common.js');
-    
-var app = express();
+var express     = require('express'),
+    http        = require('http'),
+    routes      = require('./routes'),
+    c           = require('./lib/common.js'),
+    libSocket   = require('./lib/socket.js'),
+
+    app         = express(),
+    server      = http.createServer(app),
+    socket      = c.sockjs.createServer();
+
 
 app.configure(function(){
   app.set('port', process.env.PORT || "3000");
@@ -22,9 +26,9 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-app.get('/next', routes.next);
-app.get('/prev', routes.prev);
 
-http.createServer(app).listen(app.get('port'), function(){
+socket.on('connection', libSocket);
+socket.installHandlers(server, {cookie:true, jsessionid: true, prefix:'/ws'});
+server.listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });

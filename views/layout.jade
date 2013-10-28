@@ -2,8 +2,10 @@ doctype 5
 html
 	head
 		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="viewport" content="width=device-width, initial-scale=0.7, maximum-scale=0.7, user-scalable=no"/>
 		<meta name="robots" content="noindex, nofollow">
+		link(rel="apple-touch-icon", href="/images/icon@2x.png")
 		title Mediasynced | #{title}
 		link(rel='stylesheet', href='/stylesheets/style.css')
 
@@ -12,10 +14,24 @@ html
 		link(rel='icon', href='/images/favicon.png')
  
 	body
-		header
-			h1 Score app
-			.line
+		#overlay
+			#spinner
+		#sticky_push
+			header
+				span.prev_btn
+					img(src='images/page_back_icon.png', alt='Back')
+				h1 Score app
+			block content
 
-		block content
-		
+			.clear
+		footer
+			p
+				| Copyright JBportfolio.nl (2013) &#169;
+
+		script(src='http://cdn.sockjs.org/sockjs-0.3.min.js')
+		script(src="/javascripts/spin.min.js")
+		script(src="/javascripts/easings.js")
+		script(src="/javascripts/xui-core-1.0.0.min.js")
+		script(src="/javascripts/ondomready.min.js")
+		script(src="/javascripts/quo.js")
 		script(src="/javascripts/applications.js")

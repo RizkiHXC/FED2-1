@@ -2,21 +2,4 @@ extends layout
 
 block content
 	.wrapper
-		h2 Total tournaments: #{data.meta.total_count}
-	nav 
-		.wrapper
-			ul
-				li
-					a(href='prev') Prev
-				li
-					a(href='next') Next 
-				.clear
-	section.content
-		ul
-			- each item in data.objects
-				li
-					.wrapper
-						h3 #{item.name}
-						p #{item.start_date}
-						- if (item.info != "")
-							!{item.info}
+		section#content
